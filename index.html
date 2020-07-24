@@ -98,7 +98,18 @@
 
     <script src="https://baltaio.blob.core.windows.net/static/js/uikit.min.js?v1"></script>
     <script src="https://baltaio.blob.core.windows.net/static/js/uikit-icons.min.js?v1"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
 
+        document.querySelector('#show').addEventListener('click', () => {
+            const iconUrl = document.querySelector('select').selectedOptions[0].value;
+            let imgElement = document.createElement('img');
+            imgElement.src = iconUrl;
+            document.querySelector('#container').appendChild(imgElement);
+        });
+    </script>
 </body>
 
 </html>
